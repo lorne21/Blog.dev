@@ -11,7 +11,21 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+
+Route::get('portfolio', 'HomeController@getPortfolio');
+
+Route::get('/', 'PostsController@index');
+
+Route::get('post_id', 'PostsController@storeComment');
+
+Route::resource('posts', 'PostsController');
+
+Route::get('login', 'HomeController@showLogin');
+
+Route::post('login', 'HomeController@doLogin');
+
+Route::get('logout', 'HomeController@doLogout');
+
+Route::get('practice', 'HomeController@getPractice');
+
+

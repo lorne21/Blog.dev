@@ -20,4 +20,47 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+	public function showPortfolio()
+	{
+		return Redirect::action('HomeController@getPortfolio');
+	}
+
+	public function getPortfolio()
+	{
+		return View::make('portfolio');
+	}
+
+	public function showLogin()
+	{
+		return View::make('login');
+	}
+
+	public function getPractice()
+	{
+		return View::make('practice');
+	}
+
+	public function doLogin()
+	{
+		$email = Input::get('email');
+		$password = Input::get('password');
+
+		if (Auth::attempt(array('email'=> $email, 'password'=> $password))){
+			Session::flash('successMessage', 'You logged in successfully');
+			return Redirect::intended('/');
+		} else {
+			Session::flash('errorMessage', 'Login credentials are incorrect.');
+			//log email that tried to authenticate
+			return Redirect::action('HomeController@showLogin');
+		}
+	}
+
+	public function doLogout()
+	{
+		Auth::logout();
+		Session::flash('successMessage', 'You are logged out');
+		return Redirect::to('/');
+	}
+
+
 }

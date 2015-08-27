@@ -1,7 +1,6 @@
 <?php
 
 class DatabaseSeeder extends Seeder {
-
 	/**
 	 * Run the database seeds.
 	 *
@@ -11,7 +10,10 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		// $this->call('UserTableSeeder');
-	}
+		DB::table('posts')->delete();
+		DB::table('users')->delete();
 
+		$this->call('UsersTableSeeder');
+		$this->call('PostsTableSeeder');
+	}
 }

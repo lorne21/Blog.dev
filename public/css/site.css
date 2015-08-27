@@ -1,0 +1,195 @@
+.cubeSlider-wrapper {
+    position: relative;
+    perspective: 200vh;
+    overflow: hidden;
+    background-color: #fedcba;
+    width: 100vw;
+    height: 100vh;
+}
+
+.cubeSlider-wrapper .cubeSlider {
+    position: absolute;
+    transform-style: preserve-3d;
+    transform: translateZ( -50vh) rotateX(0deg);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: transform 2s;
+}
+
+.cubeSlider-wrapper .cubeSlider > div {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    transform: rotateX( 180deg) translateZ( 50vh);
+    color: #fff;
+    background-color: #000;
+    background-size: cover;
+    background-image: url(http://lorempixel.com/1600/900/abstract/1);
+}
+
+.cubeSlider-wrapper .control {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1em;
+    margin: auto;
+    pointer-events: none;
+}
+
+.cubeSlider-wrapper .control a {
+    color: #fff;
+    font-size: 0.5em;
+    line-height: 1em;
+    pointer-events: visible;
+    transition: 1s;
+}
+
+.cubeSlider-wrapper .control .next {
+    float: right;
+    clear: right;
+}
+
+.cubeSlider-wrapper .control .prev {
+    float: right;
+}
+
+.cubeSlider-wrapper .cubeSlider > div.before {
+    transform: rotateX( 90deg) translateZ( 50vh);
+    background-image: url(http://lorempixel.com/1600/900/abstract/2);
+}
+
+.cubeSlider-wrapper .cubeSlider > div.active {
+    transform: rotateX( 0deg) translateZ( 50vh);
+    background-image: url(http://lorempixel.com/1600/900/abstract/3);
+}
+
+.cubeSlider-wrapper .cubeSlider > div.after {
+    transform: rotateX( 270deg) translateZ( 50vh);
+    background-image: url(http://lorempixel.com/1600/900/abstract/4);
+}
+
+.cubeSlider h1 {
+    font-size: 32vh;
+    line-height: 50vh;
+    text-align: center
+}
+
+.random-color {
+  border-top-color: "DarkMagenta";
+  border-right-color: #9c7c59;
+  border-bottom-color: rgb(228, 226, 55);
+  border-left-color: rgb(5%, 9%, 74%);
+  outline-top-color: hsl(82, 32%, 33%);
+  outline-right-color: rgba(208, 67, 136, 0.92);
+  outline-bottom-color: rgba(95%, 37%, 86%, 0.99);
+  outline-left-color: hsla(298, 16%, 84%, 0.96);
+}
+
+.cubeSlider-wrapper {
+  position: relative;
+  -webkit-perspective: 200vh;
+          perspective: 200vh;
+  overflow: hidden;
+  background-color: #fedcba;
+  width: 100vw;
+  height: 100vh;
+}
+
+.cubeSlider-wrapper .cubeSlider {
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: translateZ(-50vh) rotateX(0deg);
+          transform: translateZ(-50vh) rotateX(0deg);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: -webkit-transform 2s;
+          transition: transform 2s;
+}
+
+.cubeSlider-wrapper .cubeSlider > div {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
+  -webkit-transform: rotateX(180deg) translateZ(50vh);
+          transform: rotateX(180deg) translateZ(50vh);
+  color: #fff;
+  background-color: #000;
+  background-size: cover;
+  background-image: url(http://lorempixel.com/1600/900/abstract/1);
+}
+
+.cubeSlider-wrapper .control {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1em;
+  margin: auto;
+  pointer-events: none;
+}
+
+.cubeSlider-wrapper .control a {
+  color: #fff;
+  font-size: 0.5em;
+  line-height: 1em;
+  pointer-events: visible;
+  -webkit-transition: 1s;
+          transition: 1s;
+}
+
+.cubeSlider-wrapper .control .next {
+  float: right;
+  clear: right;
+}
+
+.cubeSlider-wrapper .control .prev {
+  float: right;
+}
+
+.cubeSlider-wrapper .cubeSlider > div.before {
+  -webkit-transform: rotateX(90deg) translateZ(50vh);
+          transform: rotateX(90deg) translateZ(50vh);
+  background-image: url(http://lorempixel.com/1600/900/abstract/2);
+}
+
+.cubeSlider-wrapper .cubeSlider > div.active {
+  -webkit-transform: rotateX(0deg) translateZ(50vh);
+          transform: rotateX(0deg) translateZ(50vh);
+  background-image: url(http://lorempixel.com/1600/900/abstract/3);
+}
+
+.cubeSlider-wrapper .cubeSlider > div.after {
+  -webkit-transform: rotateX(270deg) translateZ(50vh);
+          transform: rotateX(270deg) translateZ(50vh);
+  background-image: url(http://lorempixel.com/1600/900/abstract/4);
+}
+
+.cubeSlider h1 {
+  font-size: 32vh;
+  line-height: 50vh;
+  text-align: center;
+}
