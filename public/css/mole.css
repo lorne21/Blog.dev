@@ -1,0 +1,203 @@
+.container {
+	background: url(/img/carmenMap.jpg) no-repeat; 
+	background-size: cover;
+	height: 750px;
+	width: 100%;
+	position: fixed;
+}
+
+#begin {
+	background: url(/img/carmenlogo2.jpg);
+	background-size: cover;
+	width: 250px;
+	height: 250px; 
+	position: absolute;
+	bottom: 538px;
+	right: 650px;
+	/*border: 1px solid black;*/
+	border-radius: 50%;
+	opacity: 0;
+		/*border attribute is just for editing maps*/
+}
+
+h2 {
+	position: absolute;
+	bottom: 37px;
+	right: 72px;
+	font-size: 500%; 
+	font-weight: bolder;
+	/*border: 1px solid black;*/
+		/*border attribute is just for editing maps*/
+}
+
+#newScore {
+	width: 184px;
+	height: 162px; 
+	position: absolute;
+	bottom: 505px;
+	right: 221px;
+	border-radius: 50%;
+}
+
+.secondRound{
+	opacity: 0;
+}
+
+.mole {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	/*border: 1px solid black; */
+	position: absolute;
+}
+
+#mole0 {
+	bottom: 104px;
+	right: 220px;
+
+}
+
+#mole1 {
+	bottom: 340px;
+	right: 400px;
+
+}
+
+#mole2 {
+	bottom: 235px;
+	right: 645px;
+
+}
+
+#mole3 {
+	bottom: 158px;
+	right: 942px;
+
+}
+
+#mole4 {
+	bottom: 348px;
+	right: 1069px;
+
+}
+
+#mole5 {
+	bottom: 380px;
+	right: 670px;
+
+}
+
+#mole6 {
+	bottom: 258px;
+	right: 1061px;
+
+}
+
+#mole7 {
+	bottom: 210px;
+	right: 517px;
+
+}
+
+#mole8 {
+	bottom: 186px;
+	right: 770px;
+}
+
+#mole9 {
+	bottom: 331px;
+	right: 134px;
+}
+
+#mole10 {
+	bottom: 401px;
+	right: 622px;
+}
+
+#mole11 {
+	bottom: 100px;
+	right: 1000px;
+}
+
+#mole12 {
+	bottom: 70px;
+	right: 526px;
+}
+
+#mole13 {
+	bottom: 14px;
+	right: 1252px;
+}
+
+#mole14 {
+	bottom: 35px;
+	right: 780px;
+}
+
+#mole15 {
+	bottom: 0px;
+	right: 0px;
+}
+
+#mole16 {
+	bottom: 0px;
+	right: 0px;
+}
+
+#mole17 {
+	bottom: 0px;
+	right: 0px;
+}
+
+#mole18 {
+	bottom: 0px;
+	right: 0px;
+}
+
+#mole19 {
+	bottom: 0px;
+	right: 0px;
+}
+
+#mole20 {
+	bottom: 0px;
+	right: 0px;
+}
+
+#mole21 {
+	bottom: 0px;
+	right: 0px;
+}
+
+#mole22 {
+	bottom: 0px;
+	right: 0px;
+}
+
+#mole23 {
+	bottom: 0px;
+	right: 0px;
+}
+
+#mole24 {
+	bottom: 0px;
+	right: 0px;
+}
+
+#mole25 {
+	bottom: 0px;
+	right: 0px;
+}
+
+#mole26 {
+	bottom: 0px;
+	right: 0px;
+}
+
+
+
+.active {
+	background: url(/img/henchman/henchman6.jpg);
+	background size: cover;
+}
+

@@ -27,7 +27,22 @@ class HomeController extends BaseController {
 
 	public function getPortfolio()
 	{
-		return View::make('portfolio');
+		return View::make('editportfolio');
+	}
+
+	public function showMole()
+	{
+		return Redirect::action('HomeController@getMole');
+	}
+
+	public function getMole()
+	{
+		return View::make('mole');
+	}
+
+	public function getSimon()
+	{
+		return View::make('simon');
 	}
 
 	public function showLogin()

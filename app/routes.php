@@ -28,4 +28,8 @@ Route::get('logout', 'HomeController@doLogout');
 
 Route::get('practice', 'HomeController@getPractice');
 
+Route::get('mole', 'HomeController@getMole');
+
+Route::get('simon', 'HomeController@getSimon');
+
 
