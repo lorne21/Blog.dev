@@ -11,12 +11,11 @@
 |
 */
 
+Route::get('/', 'HomeController@getPortfolio');
 
-Route::get('portfolio', 'HomeController@getPortfolio');
+Route::get('posts/manage', 'PostsController@getManage');
 
-Route::get('/', 'PostsController@index');
-
-Route::get('post_id', 'PostsController@storeComment');
+Route::get('posts/getList', 'PostsController@getList');
 
 Route::resource('posts', 'PostsController');
 
@@ -26,10 +25,14 @@ Route::post('login', 'HomeController@doLogin');
 
 Route::get('logout', 'HomeController@doLogout');
 
+Route::get('portfolio', 'HomeController@getPortfolio');
+
 Route::get('practice', 'HomeController@getPractice');
 
 Route::get('mole', 'HomeController@getMole');
 
 Route::get('simon', 'HomeController@getSimon');
+
+Route::get('index', 'PostsController@index');
 
 

@@ -1,23 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <meta name="csrf-token" content="{{{ csrf_token() }}}">
-      <!-- Stylesheets -->
-      <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-      <link rel="stylesheet" type="text/css" href="/css/practice.css">
+@extends('layouts.master')
 
-      {{-- Scripts --}}
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-      <script src="/js/practice.js"></script>
-  </head>
-<body>
-  <nav class="navbar navbar-inverse navbar-static-top">
+
+@section('content')
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container" >
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -33,7 +20,7 @@
           <ul class="nav navbar-nav">
             @if(Auth::check())
             <li><a href="{{ action('PostsController@create') }}">Create Post</a></li>
-            <li><a href="{{ action('PostsController@getManage') }}">Manage Posts</a></li>
+            <li><a href="{{ action('PostsController@manage') }}">Manage Posts</a></li>
             <li><a href="{{ action('HomeController@doLogout') }} ">Logout</a></li>
             @else
             <li><a href="#login" data-toggle="modal" data-target="#loginModal">Login</a></li>
@@ -73,9 +60,82 @@
         @endif
 
     </div><!-- /.container -->
-    @yield('content')
+  
+        
+      {{ Form::open(array('action' => array('PostsController@index'), 'method' => 'GET')) }}
+            <div class="form-group col-xs-4">
+                {{-- {{ Form::label('search', 'Search') }} --}}
+                {{ Form::text('search', null, ['class' => 'form-control', 'placeholder' => 'Search Blog']) }}
+            </div>
 
-    <!-- LOGIN MODAL -->
+            <button class="btn btn-primary">Search</button>
+      {{ Form::close() }}
+      <br>
+      <!--İTEM-->
+      @foreach($posts as $post)
+
+      <div class="col-4-grid">
+         <div class="item">
+            <div class="front-end">
+              <div class="item-title">{{ $post->title }}</div>
+              <img src="{{ $post->img_path }}" alt="" />
+            </div>
+            <div class="back-end">
+              <div class="item-image">
+                <img src="{{ $post->img_path }}" alt="" />
+              </div>
+              <div class="item-title">{{ $post->title }}</div>
+              <p>{{{ $post->body }}}</p>
+
+              <p>{{{ $post->body }}}</p>
+
+              <p>{{{ $post->body }}}</p>
+
+              {{ Form::open(array('action' => array('PostsController@storeComment'))) }}
+                  <div class="form-group @if($errors->has('title')) has-error @endif">
+                      {{-- {{ Form::label('comment', 'Please Leave A Comment') }} --}}
+                      {{ Form::text('comment', null, ['class' => 'form-control', 'placeholder' => 'Please Leave A Comment']) }}
+                  </div>
+                  <button class="btn btn-primary">Leave Comment</button>
+              {{ Form::close() }}
+
+              @if(Auth::check())
+                @if(Auth::id() == $post->user_id)
+                  <div class="row">
+                      <div class="col-md-6">
+                          <a class="btn btn-primary" href="{{ action('PostsController@edit', $post->id) }}">Edit</a>
+                          {{-- <button id="delete" class="btn btn-danger del-btn" data-action="{{action()}}">Delete</button> --}}
+                      </div>
+                  </div>
+                @endif
+              @endif
+              
+
+            </div>
+         </div>
+      </div>
+      @endforeach
+      <!--#İTEM-->
+      <br>
+      {{ $posts->links() }}
+
+      
+      {{-- {{ Form::open(['method' => 'DELETE' 'id'=>'del-form']) }} --}}
+      {{-- {{ Form::close() }} --}}
+   <!--#ROW--> 
+</div>
+<!--#CONTAINER-->
+<!--SHOW ITEM-->
+<div class="show-item">
+  <div class="show-item-close"></div>
+  <!--CONTAINER600-->
+  <div class="container600 single"></div>
+  <!--#CONTAINER600-->
+  <div class="show-item-back-top"></div>
+</div>
+<!--#SHOW ITEM-->
+
+<!-- LOGIN MODAL -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -102,5 +162,5 @@
       </div>
     </div>
 <!-- END LOGIN MODAL -->
-</body>
-</html>
+
+@stop

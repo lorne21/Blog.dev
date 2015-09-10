@@ -20,14 +20,10 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
-	public function showPortfolio()
-	{
-		return Redirect::action('HomeController@getPortfolio');
-	}
 
 	public function getPortfolio()
 	{
-		return View::make('editportfolio');
+		return View::make('portfolio');
 	}
 
 	public function showMole()

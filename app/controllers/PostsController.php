@@ -75,7 +75,9 @@ class PostsController extends \BaseController {
             $post->title = Input::get('title');
             $post->body = Input::get('body');
             $post->user_id = Auth::id();
-            $post->img_path = $image->move($directory);
+            if (Input::hasFile('img_path')) {
+                $post->img_path = $image->move($directory);
+            }
             $post->save();
             Log::info("Post successfully saved.", Input::all());
             Session::flash('successMessage', 'You created ' . $post->title . ' post successfully');
@@ -132,18 +134,19 @@ class PostsController extends \BaseController {
             $post = Post::find($id);
             $directory = 'img/uploads/';
             $image = Input::file('img_path');
-            if(!$post) {
-                $message = "Post with id of $id is not found";
-                Log::warning($message);
-                Session::flash('errorMessage', $message);
-                App::abort(404);
-            }
+    
             $post->title = Input::get('title');
             $post->body = Input::get('body');
-            $post->img_path = $image->move($directory);
+            if (Input::hasFile('img_path')) {
+                $post->img_path = $image->move($directory);
+            }
             $post->save();
-            Session::flash('successMessage', 'You update ' . $post->title . ' post successfully');
-            return Redirect::action('PostsController@index');
+            if (Request::wantsJson()) {
+                return Response::json(array("Post edited successfully"));
+            } else {
+                Session::flash('errorMessage', "Post with id of $id is not found");
+                return Redirect::action('PostsController@getManage');
+            }
         }
 	}
 	/**
@@ -152,37 +155,38 @@ class PostsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function storeComment($post_id)
-    {
-        // create the validator
-        $validator = Validator::make(Input::all(), Comment::$rules);
-        // attempt validation
-        if ($validator->fails()) {
-            Session::flash('errorMessage', 'Something went wrong. Please read errors below:');
-            Log::info('Validator failed', Input::all());
-            return Redirect::back()->withInput()->withErrors($validator);
-        } else {
-            // validation succeeded, create and save the post
-            $comment = new Comment;
-            $comment->body = Input::get('comment');
-            $comment->post_id = $post_id;
-            $comment->save();
-            Log::info("Comment successfully saved.", Input::all());
-            Session::flash('successMessage', 'Your comment posted successfully');
-            return Redirect::action('PostsController@index');
-        }
-    }
 
     public function destroy($id)
 	{
         $post = Post::find($id);
-        if(!$post) {
-            Session::flash('errorMessage', "Post with id of $id is not found");
-            App::abort(404);
-        }
+        // if(!$post) {
+        //     Session::flash('errorMessage', "Post with id of $id is not found");
+        //     App::abort(404);
+        // }
+        // $post->delete();
+        // return Redirect::action('PostsController@index');
         $post->delete();
-        return Redirect::action('PostsController@index');
+
+        if (Request::wantsJson()) {
+            return Response::json(array("Post deleted successfully"));
+        } else {
+            Session::flash('errorMessage', "Post with id of $id is not found");
+            return Redirect::action('PostsController@getManage');
+        }
 	}
 
+    public function getManage()
+    {
+        return View::make('posts.manage');
+    }
+
+    public function getList()
+    {
+        $query = Post::with('user');
+
+        $posts = $query->get();
+
+        return Response::json($posts);
+    }
 	
 }
