@@ -70,7 +70,7 @@ class HomeController extends BaseController {
 	{
 		Auth::logout();
 		Session::flash('successMessage', 'You are logged out');
-		return Redirect::to('/');
+		return Redirect::to('EventsController@index');
 	}
 
 

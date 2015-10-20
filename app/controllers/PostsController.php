@@ -140,13 +140,14 @@ class PostsController extends \BaseController {
             if (Input::hasFile('img_path')) {
                 $post->img_path = $image->move($directory);
             }
-            $post->save();
+            
             if (Request::wantsJson()) {
                 return Response::json(array("Post edited successfully"));
             } else {
                 Session::flash('errorMessage', "Post with id of $id is not found");
                 return Redirect::action('PostsController@getManage');
             }
+            $post->save();
         }
 	}
 	/**
@@ -159,13 +160,10 @@ class PostsController extends \BaseController {
     public function destroy($id)
 	{
         $post = Post::find($id);
-        // if(!$post) {
-        //     Session::flash('errorMessage', "Post with id of $id is not found");
-        //     App::abort(404);
-        // }
-        // $post->delete();
-        // return Redirect::action('PostsController@index');
-        $post->delete();
+        if(!$post) {
+            Session::flash('errorMessage', "Post with id of $id is not found");
+            App::abort(404);
+        }
 
         if (Request::wantsJson()) {
             return Response::json(array("Post deleted successfully"));
@@ -173,6 +171,12 @@ class PostsController extends \BaseController {
             Session::flash('errorMessage', "Post with id of $id is not found");
             return Redirect::action('PostsController@getManage');
         }
+
+        $post->delete();
+        
+        return Redirect::action('PostsController@index');
+        
+
 	}
 
     public function getManage()
