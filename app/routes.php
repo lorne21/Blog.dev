@@ -33,6 +33,8 @@ Route::get('mole', 'HomeController@getMole');
 
 Route::get('simon', 'HomeController@getSimon');
 
+Route::get('project', 'HomeController@getProject');
+
 Route::get('index', 'PostsController@index');
 
 

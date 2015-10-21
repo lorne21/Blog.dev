@@ -172,7 +172,8 @@ $(document).ready(function() {
 	$('.view-project').on('click', function(e) {
 		e.preventDefault();
 		
-		var href 			= $(this).attr('href') + ' .portfolio-project',
+		var href 			= $(this).attr('href'), 
+		// + ' .portfolio-project',
 			portfolioWrap	= $('.porfolio-container'),
 			contentLoaded 	= $('#portfolio-load'),
 			offset			= $('#section-screenshots').offset().top;

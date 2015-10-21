@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="/css/responsive.css" />
   
-  <!--=== Color Scheme, three colors are available red.css, orange.css and gray.css ===-->
+  <!--=== Color Scheme ===-->
   <link rel="stylesheet" id="scheme-source" href="/css/schemes/orange.css" />
   
   <style>
@@ -73,7 +73,6 @@
                 <li><a href="#step-1">About</a></li>
                 <li><a href="#section-screenshots">Projects</a></li>
                 <li><a href="#section-feature">Blog</a></li>
-                <li><a href="#section-services">Services</a></li>
                 <li><a href="#section-contact">Contact Me</a></li>
               </ul>
             </div>
@@ -95,14 +94,6 @@
           <div class="col-md-8 col-md-offset-2">
             <p class="intro-message">Full Stack Web Developer</p>
             <p class="intro-message">San Antonio, Texas</p>
-            <!-- <div class="home-buttons">
-              <a href="#" class="fancy-button button-line button-white vertical">
-                Learn more
-                <span class="icon">
-                  <i class="fa fa-gear"></i>
-                </span>
-              </a>
-            </div> -->
           </div>
         </div>
       </div>
@@ -127,25 +118,20 @@
           
           <div class="col-md-10 step-details">
               <h3 class="step-title color-scheme">About Me</h3>
-              <p class="step-description">Cillum laboris <strong>consequat</strong>, qui elit retro next level 
-              skateboard freegan hella. Cillum laboris consequat qui elit retro next level 
-              skateboard freegan hella. Cillum laboris consequat skateboard freegan hella</p>
+              <p class="step-description">I'm a full-stack web developer currently residing in the great city of San Antonio. I am a <a href="//codeup.com"
+            target="_blank">Codeup</a> Programming Bootcamp graduate and you can see some of my projects below. I've also worked as a paralegal, opera singer, basketball coach, and bartender.  In my free time, I sing blues and folk with a local group, play basketball, and teach blues and swing dancing.</p>
               
               <ul class="sub-steps"> <!-- Sub steps here -->
                 <li>
-                  <span class="icon fa fa-comments color-scheme"></span>
-                  <span class="sub-text">skateboard freegan hella. Cillum laboris consequat qui elit</span>
-                </li>
-                <li>
-                  <span class="icon fa fa-pencil-square-o color-scheme"></span>
-                  <span class="sub-text">Documenting collected data</span>
+                  <span class="icon fa fa-pencil-square-o color-scheme"> Languages:</span>
+                  <span class="sub-text">Angular JS, jQuery, MySQL, SASS, Laravel, PHP, JavaScript</span>
                 </li>
               </ul>
           </div> <!-- End step-details -->
         </div>
         <!-- Step Description Ends -->
         <div class="col-md-4 step-img">
-          <img src="images/note.png" alt="" /> <!-- Step Photo Here -->
+          <img src="img/lorne/lorne1.jpg" alt="" /> <!-- Step Photo Here -->
         </div>
       </div>
     </div>
@@ -164,12 +150,12 @@
         <div class="col-md-4 col-sm-4 col-xs-6">
           <div class="screenshot">
             <div class="photo-box">
-              <img src="images/7.jpg" alt="" />
+              <img src="/img/simon.png" alt="" />
               <div class="photo-overlay">
-                <h4>Wordpress theme</h4>
+                <h4>Simple Simon</h4>
               </div>
               <span class="photo-zoom">
-                <a href="single-project.html" class="view-project"><i class="fa fa-search-plus fa-2x"></i></a>
+                <a href="{{ action('HomeController@getProject') }}" class="view-project"><i class="fa fa-search-plus fa-2x"></i></a>
               </span>
             </div>
           </div>
@@ -454,70 +440,6 @@
   </section>
   <!--=== Features section Ends ===-->
   
-  <!--=== Services section Starts ===-->
-  <section id="section-services" class="services-wrap">
-    <div class="container services">
-      <div class="row">
-      
-        <div class="col-md-10 col-md-offset-1 center section-title">
-          <h3>What I do best</h3>
-        </div>
-      
-        <!-- Single Service Starts -->
-        <div class="col-md-6 col-sm-6 service animated" data-animation="fadeInLeft" data-animation-delay="700">
-          <span class="service-icon center"><i class="icon icon-basic-book-pencil fa-3x"></i></span>
-          <div class="service-desc">
-            <h4 class="service-title color-scheme">Clean Design</h4>
-            <p class="service-description justify">
-              Cillum laboris consequat, qui elit retro next level skateboard freegan hella.
-              Cillum laboris consequat, qui elit retro next level skateboard freegan hella.
-            </p>
-          </div>
-        </div>
-        <!-- Single Service Ends -->
-        
-        <!-- Single Service Starts -->
-        <div class="col-md-6 col-sm-6 service animated" data-animation="fadeInUp" data-animation-delay="700">
-          <span class="service-icon center"><i class="icon icon-basic-paperplane fa-3x"></i></span>
-          <div class="service-desc">
-            <h4 class="service-title color-scheme">Full responsive</h4>
-            <p class="service-description justify">
-              Cillum laboris consequat, qui elit retro next level skateboard freegan hella.
-              Cillum laboris consequat, qui elit retro next level skateboard freegan hella.
-            </p>
-          </div>
-        </div>
-        <!-- Single Service ends -->
-        
-        <!-- Single Service Starts -->
-        <div class="col-md-6 col-sm-6 service animated" data-animation="fadeInRight" data-animation-delay="700">
-          <span class="service-icon center"><i class="icon icon-basic-accelerator fa-3x"></i></span>
-          <div class="service-desc">
-            <h4 class="service-title color-scheme">Ajax contact form</h4>
-            <p class="service-description justify">
-              Cillum laboris consequat, qui elit retro next level skateboard freegan hella.
-              Cillum laboris consequat, qui elit retro next level skateboard freegan hella.
-            </p>
-          </div>
-        </div>
-        <!-- Single Service Ends -->
-        
-        <!-- Single Service Starts -->
-        <div class="col-md-6 col-sm-6 service animated" data-animation="fadeInUp" data-animation-delay="700">
-          <span class="service-icon center"><i class="icon icon-basic-lightbulb fa-3x"></i></span>
-          <div class="service-desc">
-            <h4 class="service-title color-scheme">Mailchimp ready</h4>
-            <p class="service-description justify">
-              Cillum laboris consequat, qui elit retro next level skateboard freegan hella.
-              Cillum laboris consequat, qui elit retro next level skateboard freegan hella.
-            </p>
-          </div>
-        </div>
-        <!-- Single Service Ends -->
-      </div>
-    </div>
-  </section>
-  <!--=== Services section Ends ===-->
 
   <!--=== Contact section Starts ===-->
   <section id="section-contact" class="contact-wrap">
@@ -571,6 +493,7 @@
               <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
               <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
               <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+              <li><a href="#"><i class="fa fa-github-square"></i></a></li>
             </ul>
           </div>
           

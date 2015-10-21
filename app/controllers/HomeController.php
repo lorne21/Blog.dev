@@ -51,6 +51,11 @@ class HomeController extends BaseController {
 		return View::make('practice');
 	}
 
+	public function getProject()
+	{
+		return View::make('project');
+	}
+
 	public function doLogin()
 	{
 		$email = Input::get('email');
