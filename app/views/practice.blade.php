@@ -72,8 +72,8 @@
                 <li class="current"><a href="#header">Home</a></li>
                 <li><a href="#step-1">About</a></li>
                 <li><a href="#section-screenshots">Projects</a></li>
-                <li><a href="#section-feature">Blog</a></li>
-                <li><a href="#section-contact">Contact Me</a></li>
+                {{-- <li><a href="#section-feature">Blog</a></li> --}}
+                {{-- <li><a href="#section-contact">Contact Me</a></li> --}}
               </ul>
             </div>
             <!-- Main Navigation menu ends-->
@@ -118,8 +118,7 @@
           
           <div class="col-md-10 step-details">
               <h3 class="step-title color-scheme">About Me</h3>
-              <p class="step-description">I'm a full-stack web developer currently residing in the great city of San Antonio. I am a <a href="//codeup.com"
-            target="_blank">Codeup</a> Programming Bootcamp graduate and you can see some of my projects below. I've also worked as a paralegal, opera singer, basketball coach, and bartender.  In my free time, I sing blues and folk with a local group, play basketball, and teach blues and swing dancing.</p>
+              <p class="step-description">I'm a full-stack web developer currently residing in the great city of San Antonio. I am a Codeup Programming Bootcamp graduate and you can see some of my projects below. I've also worked as a paralegal, opera singer, basketball coach, and bartender.  In my free time, I sing blues and folk with a local group, play basketball, and teach blues and swing dancing.</p>
               
               <ul class="sub-steps"> <!-- Sub steps here -->
                 <li>
@@ -146,106 +145,25 @@
         <div class="col-md-10 col-md-offset-1 center section-title">
           <h3>My Projects</h3>
         </div>
+        @foreach($projects as $project)
         <!-- Single screenshot starts -->
         <div class="col-md-4 col-sm-4 col-xs-6">
           <div class="screenshot">
             <div class="photo-box">
-              <img src="/img/simon.png" alt="" />
+              <img src="{{ $project->img }}" alt="" />
               <div class="photo-overlay">
-                <h4>Simple Simon</h4>
+                <h4>{{ $project->title}}</h4>
               </div>
               <span class="photo-zoom">
-                <a href="{{ action('HomeController@getProject') }}" class="view-project"><i class="fa fa-search-plus fa-2x"></i></a>
-              </span>
-            </div>
-          </div>
-        </div>
-        <!-- Single screenshot ends -->
-        
-        <!-- Single screenshot starts -->
-        <div class="col-md-4 col-sm-4 col-xs-6">
-          <div class="screenshot">
-            <div class="photo-box">
-              <img src="images/2.jpg" alt="" />
-              <div class="photo-overlay">
-                <h4>User Interface design</h4>
-              </div>
-              <span class="photo-zoom">
-                <a href="single-project-2.html" class="view-project"><i class="fa fa-search-plus fa-2x"></i></a>
+                <a href="{{ action('ProjectsController@show', $project->id) }}" class="view-project"><i class="fa fa-search-plus fa-2x"></i></a>
               </span>
             </div>
             
           </div>
         </div>
         <!-- Single screenshot ends -->
+        @endforeach
         
-        <!-- Single screenshot starts -->
-        <div class="col-md-4 col-sm-4 col-xs-6">
-          <div class="screenshot">
-            <div class="photo-box">
-              <img src="images/3.jpg" alt="" />
-              <div class="photo-overlay">
-                <h4>PSD template design</h4>
-              </div>
-              <span class="photo-zoom">
-                <a href="single-project.html" class="view-project"><i class="fa fa-search-plus fa-2x"></i></a>
-              </span>
-            </div>
-            
-          </div>
-        </div>
-        <!-- Single screenshot ends -->
-        
-        <!-- Single screenshot starts -->
-        <div class="col-md-4 col-sm-4 col-xs-6">
-          <div class="screenshot">
-            <div class="photo-box">
-              <img src="images/4.jpg" alt="" />
-              <div class="photo-overlay">
-                <h4>User Experience design</h4>
-              </div>
-              <span class="photo-zoom">
-                <a href="single-project-2.html" class="view-project"><i class="fa fa-search-plus fa-2x"></i></a>
-              </span>
-            </div>
-            
-          </div>
-        </div>
-        <!-- Single screenshot ends -->
-        
-        <!-- Single screenshot starts -->
-        <div class="col-md-4 col-sm-4 col-xs-6">
-          <div class="screenshot">
-            <div class="photo-box">
-              <img src="images/5.jpg" alt="" />
-              <div class="photo-overlay">
-                <h4>Page builder plugin</h4>
-              </div>
-              <span class="photo-zoom">
-                <a href="single-project.html" class="view-project"><i class="fa fa-search-plus fa-2x"></i></a>
-              </span>
-            </div>
-            
-          </div>
-        </div>
-        <!-- Single screenshot ends -->
-        
-        <!-- Single screenshot starts -->
-        <div class="col-md-4 col-sm-4 col-xs-6">
-          <div class="screenshot">
-            <div class="photo-box">
-              <img src="images/6.jpg" alt="" />
-              <div class="photo-overlay">
-                <h4>Corporate website</h4>
-              </div>
-              <span class="photo-zoom">
-                <a href="single-project-2.html" class="view-project"><i class="fa fa-search-plus fa-2x"></i></a>
-              </span>
-            </div>
-            
-          </div>
-        </div>
-        <!-- Single screenshot ends -->
         
       </div>
       
@@ -267,7 +185,7 @@
   </section>
   <!--=== ScreenShots section Ends ===-->
   
-  <!--=== Features section Starts ===-->
+{{--   <!--=== Features section Starts ===-->
   <section id="section-feature" class="feature-wrap">
     <div class="container features center">
       <div class="row">
@@ -407,6 +325,8 @@
                 </a>
               </li>
               <!-- Single Feature Ends -->
+
+
             </ul>
             <!--Features container Ends -->
             
@@ -420,6 +340,11 @@
               <button class="control-icon fancy-button button-line no-text btn-col zoom" id="feature-expand" title="Expand" >
                 <span class="icon">
                   <i class="fa fa-expand"></i>
+                </span>
+              </button>
+              <button class="control-icon fancy-button button-line no-text btn-col zoom" id="feature-all" title="All">
+                <span class="icon">
+                  All
                 </span>
               </button>
               <button class="control-icon fancy-button button-line no-text btn-col zoom" id="feature-close" title="Collapse" >
@@ -437,12 +362,12 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
   <!--=== Features section Ends ===-->
   
 
   <!--=== Contact section Starts ===-->
-  <section id="section-contact" class="contact-wrap">
+  {{-- <section id="section-contact" class="contact-wrap">
   <div class="section-overlay"></div>
     <div class="container contact center animated" data-animation="flipInY" data-animation-delay="1000">
       <div class="row">
@@ -475,7 +400,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
   <!--=== Contact section Ends ===-->
   
   <!--=== Footer section Starts ===-->

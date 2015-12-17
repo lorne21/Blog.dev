@@ -41,6 +41,26 @@ class HomeController extends BaseController {
 		return View::make('simon');
 	}
 
+	public function getPuzzle()
+	{
+		return View::make('puzzlepic');
+	}
+
+	public function getHangman()
+	{
+		return View::make('hangman');
+	}
+
+	public function getMemory()
+	{
+		return View::make('memory');
+	}
+
+	public function getClue()
+	{
+		return View::make('clue');
+	}
+
 	public function showLogin()
 	{
 		return View::make('login');
@@ -48,7 +68,8 @@ class HomeController extends BaseController {
 
 	public function getPractice()
 	{
-		return View::make('practice');
+		$projects = Project::all();
+		return View::make('practice', ['projects' => $projects]);
 	}
 
 	public function getProject()

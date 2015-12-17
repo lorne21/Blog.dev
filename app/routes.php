@@ -11,13 +11,15 @@
 |
 */
 
-Route::get('/', 'HomeController@getPortfolio');
+Route::get('/', 'HomeController@getPractice');
 
 Route::get('posts/manage', 'PostsController@getManage');
 
 Route::get('posts/getList', 'PostsController@getList');
 
 Route::resource('posts', 'PostsController');
+
+Route::resource('projects', 'ProjectsController');
 
 Route::get('login', 'HomeController@showLogin');
 
@@ -33,7 +35,15 @@ Route::get('mole', 'HomeController@getMole');
 
 Route::get('simon', 'HomeController@getSimon');
 
-Route::get('project', 'HomeController@getProject');
+Route::get('puzzlepic', 'HomeController@getPuzzle');
+
+Route::get('memory', 'HomeController@getMemory');
+
+Route::get('hangman', 'HomeController@getHangman');
+
+Route::get('clue', 'HomeController@getClue');
+
+// Route::get('project', 'HomeController@getProject');
 
 Route::get('index', 'PostsController@index');
 

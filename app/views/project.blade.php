@@ -1,12 +1,7 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-	<meta charset="UTF-8">
-	<title>Project</title>
-	<link rel="stylesheet" href="css/bootstrap.css" />
-	<link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
+@extends('layouts.master')
+
+
+@section('content')
 	<div class="container">
 		<div class="portfolio-project">
 			<div class="row">
@@ -21,6 +16,7 @@
 					<ul class="details-list">
 						<li><i class="fa fa-th-list"></i> <strong class="strong">Category: </strong> Project category</li>
 						<li><i class="fa fa-group"></i> <strong class="strong">Technologies: </strong> Jhone Doe</li>
+						<li><i class="fa fa-calendar"></i> <strong class="strong">Date: </strong> 27 Dec 2014</li>
 						<li><i class="fa fa-link"></i> <strong class="strong">Project url: </strong> <a href="#"><strong>themegret</strong></a></li>
 					</ul>
 				</div>
@@ -36,5 +32,4 @@
 	
 	
 	
-</body>
-</html>
+@stop

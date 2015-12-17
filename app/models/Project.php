@@ -1,6 +1,6 @@
 <?php
 
-class Post extends BaseModel {
+class Project extends BaseModel {
     /**
      * The database table used by the model.
      *
@@ -8,7 +8,7 @@ class Post extends BaseModel {
      */
     protected $table = 'projects';
 
-    protected $fillable = array('title', 'tech', 'type', 'description', 'url')
+    protected $fillable = array('title', 'tech', 'type', 'description', 'url', 'img');
     
     
 }

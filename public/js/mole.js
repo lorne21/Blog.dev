@@ -1,16 +1,18 @@
 "use strict";
-$(document).ready(function(){
+// (function (){
 
 	var mistakeArray = [];
 	var level = 1; 
 	var speedInterval = 2000;
 	var scoring = 0;
-	var dogLoop;
+	var moleLoop;
+	var moleHole; 
+	var images = ['henchman1.jpg', 'henchman2.jpg', 'henchman3.jpg', 'henchman4.jpg', 'henchman6.jpg']
 
 	// this function starts the game 
 	$('#begin').click(function(e) {
 		getReady();
-		dogLoop = setInterval(moleMove, speedInterval);
+		moleLoop = setInterval(moleMove, speedInterval);
 	});
 
 	// this function clears everything but highscore
@@ -24,29 +26,19 @@ $(document).ready(function(){
 
 	// this function moves the mole
 	function moleMove(){
-		var moleHole = $('.mole')
-		var rand = Math.floor(Math.random()*6);
+		moleHole = $('.round' + level)
+		var rand = Math.floor(Math.random()*moleHole.length);
 		var toAnimate = moleHole[rand];
-		console.log(rand);
-		var id = toAnimate.getAttribute('id');
-		animateHole(id);
+		animateHole(toAnimate);
 	}
-
-	function moleMove2(){
-		var moleHole = $('.mole')
-		var rand2 = Math.floor(Math.random()*10) + 5;
-		var toAnimate = moleHole[rand2];
-		console.log(rand2);
-		var id = toAnimate.getAttribute('id');
-		animateHole(id);
-	}
-
 
 	// this function actually animates the hole.    
 	function animateHole(id){
-		$("#" + id).addClass('active');
+		$(id).addClass('active');
+		$(id).css('background' , 'url(img/henchman/' + getHench() + ') no-repeat center center');
 		setTimeout(function(){
-			$("#" + id).removeClass('active');
+			$(id).removeClass('active');
+			$(id).css('background' , '');
 		}, 1000)
 	}
 
@@ -55,60 +47,59 @@ $(document).ready(function(){
 		scoring += 1
 		console.log(scoring);
 		$('#score').text(scoring);
-		if (scoring == 3){
-			clearInterval(dogLoop);
+		if (scoring == 10){
+			clearInterval(moleLoop);
 			// create a function to pop modal and ask question
 				// if question is wrong, create function to re-run the previous round
-			alert('Round 2');
-			mapRound2();
+			levelUp();
+			scoring = 0;
 			increaseSpeed();
-			dogLoop = setInterval(moleMove2, speedInterval);
-		} else if (scoring == 6){
-			clearInterval(dogLoop);
-			alert('Round 3')
-		}
+			moleLoop = setInterval(moleMove, speedInterval);
+			alert('Round' + level);
+		} 
 	}
 
 	// this function updates the speed/round/difficulty
 	function increaseSpeed(){
 		speedInterval -= 200; 
-		console.log(speedInterval);
+		// console.log(speedInterval);
+	} 
+
+	// this function gets a random henchman
+	function getHench(){
+		var randImg = Math.floor(Math.random()*images.length);
+		var image = images[randImg];
+		return image; 
 	}
 
-	// this function updates the round
-	// function roundUpdate(){
-	// 	if (scoring == 2){
-	// 		clearInterval(dogLoop);
-	// 		// create a function to pop modal and ask question
-	// 			// if question is wrong, create function to re-run the previous round
-	// 		alert('Round 2');
-	// 		setUpRound2();
-	// 		dogLoop = setInterval(moleMove2, speedInterval);
-	// 		// dogLoop(); 
-	// 		// add modal here
-	// 		// add css to change background
-	// 		// add css to hide old divs
-	// 		// create new function to pull random from new set of divs
-	// 		// restart mole function
-
-	// 	}
-	// }
-	// this function sets the css for round 2
-	function mapRound2(){
+	
+	function levelUp(){
+		$('.round' + level).css('background' , '');
+		level += 1; 
 		mistakeArray = []
-		$('.firstRound').css('display' , 'none');
-		$('.container').css('background' , 'url(/img/europe.jpg) no-repeat');
-		$('.container').css('background-size' , 'cover');
-		$('.secondRound').css('opacity' , '1');
+		if (level == 2){
+			$('table').css('background' , 'url(/img/sa2.jpg) no-repeat center center');
+			$('table').css('background-size' , 'cover');
+		} else if (level == 3){
+			$('table').css('background' , 'url(/img/asia5.jpg) no-repeat center center');
+			$('table').css('background-size' , 'cover');
+		} else if (level == 4){
+			$('table').css('background' , 'url(/img/europe.jpg) no-repeat center center');
+			$('table').css('background-size' , 'cover');
+		} else if (level == 5){
+			$('table').css('background' , 'url(/img/africa2.gif) no-repeat center center');
+			$('table').css('background-size' , 'cover');
+		} else if (level == 6){
+			$('table').css('background' , 'url(/img/usa4.jpg) no-repeat center center');
+			$('table').css('background-size' , 'cover');
+		}
 		
-		// do new henchman stuff
-		$('#begin').css({ bottom: 322, right: 819 });
 
 	}
 
 	// this function handles the players behavior and everything that's supposed to happen
-	$('.mole').click(function(e){
-		var that = $(this);
+	$('td').click(function(e){
+		var that = $(this); 
 		if (that.hasClass('active')){
 			scoreUpdate();
 			console.log(scoring);
@@ -117,12 +108,12 @@ $(document).ready(function(){
 			mistakeArray.push('x');
 			if (mistakeArray.length == 5){
 				alert ('You Lose');
-				clearInterval(dogLoop);
+				clearInterval(moleLoop);
 				getReady();
 			}
 		}
 	});
-});
+
 	
 
 	

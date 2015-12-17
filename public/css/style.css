@@ -430,12 +430,16 @@ left: calc(50% - 110px);
 	left: 60px;
 }
 
-.features-control #feature-close {
+.features-control #feature-all {
 	left: 120px;
 }
 
-.features-control #feature-next {
+.features-control #feature-close {
 	left: 180px;
+}
+
+.features-control #feature-next {
+	left: 240px;
 }
 
 
